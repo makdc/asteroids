@@ -31,5 +31,5 @@ class CircleShape(pygame.sprite.Sprite):
     def shot_collision(self, other):
         dist = self.position.distance_to(other.position)
         if dist < (self.radius + other.radius):
-            self.kill()
+            self.split()
             other.kill()
