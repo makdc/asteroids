@@ -18,16 +18,14 @@ def main():
 	fps_time = pygame.time.Clock()
 	dt = 0
 
-
-	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-
 	updatable = pygame.sprite.Group()
 	drawable = pygame.sprite.Group()
-	Player.containers = (group_a, group_b)
-	screen.fill("black")
-	player.update(dt)
-	player.draw(screen)
 
+	Player.containers = (updatable, drawable)
+	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+	#player.update(dt)
+	#player.draw(screen)
 
 
 	while True:
@@ -35,10 +33,13 @@ def main():
     			if event.type == pygame.QUIT:
         			return
 
+		screen.fill("black")
 
+		for u in updatable:
+			u.update(dt)
 
-
-
+		for d in drawable:
+			d.draw(screen)
 
 		dt = fps_time.tick(60)/1000
 		pygame.display.flip()
