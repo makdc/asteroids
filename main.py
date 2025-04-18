@@ -29,7 +29,7 @@ def main():
 	Asteroid.containers = (asteroids, updatable, drawable)
 	AsteroidField.containers = updatable
 	asteroid_field = AsteroidField()
-	Shot.containers = (updatable, drawable)
+	Shot.containers = (shots, updatable, drawable)
 	#shot
 
 #player.update(dt)
@@ -53,7 +53,7 @@ def main():
 			a.collision(player)
 
 			for s in shots:
-				a.collision(s)
+				a.shot_collision(s)
 
 
 
